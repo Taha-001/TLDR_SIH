@@ -2,22 +2,46 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
+  Checkbox,
   CssBaseline,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
   Grid,
-  TextField,
   Typography,
 } from "@mui/material";
 import Input from "./components/Input";
 
-const LoginPage = () => {
+const subscriptionCategories = [
+  "All News",
+  "India",
+  "Business",
+  "Sports",
+  "World",
+  "Politics",
+  "Technology",
+  "Startup",
+];
+
+const RegistrationPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [categories, setCategories] = useState([]);
+
+  const categoryChangeHandler = (e) => {
+    setCategories((prevState) => {
+      return [...prevState, e.target.name];
+    });
+  };
+
   const emailChangeHandler = (e) => {
     setEmail(e.target.value);
   };
   const passwordChangeHandler = (e) => {
     setPassword(e.target.value);
   };
+  const error = categories.length === 0;
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -44,7 +68,7 @@ const LoginPage = () => {
           }}
         >
           <Typography component="h1" variant="h4">
-            Login
+            Register
           </Typography>
           <Box component="form" sx={{ mt: 1 }} onSubmit={submitHandler}>
             <Input
@@ -71,6 +95,24 @@ const LoginPage = () => {
             >
               Submit
             </Button>
+            <FormControl
+              required
+              error={error}
+              component="fieldset"
+              sx={{ marginBottom: "1rem" }}
+            >
+              <FormLabel component="legend">Pick at least one</FormLabel>
+              <FormGroup sx={{ display: "flex", flexDirection: "row" }}>
+                {subscriptionCategories.map((category) => (
+                  <FormControlLabel
+                    control={<Checkbox name={category} />}
+                    label={category}
+                    key={category}
+                    onChange={categoryChangeHandler}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
           </Box>
         </Box>
       </Grid>
@@ -78,4 +120,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegistrationPage;

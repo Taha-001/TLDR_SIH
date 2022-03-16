@@ -1,11 +1,19 @@
 import React, { Component, Fragment } from "react";
-import PersistentDrawerLeft from "./components/Drawer";
+import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
 import { Routes, Route } from "react-router-dom";
 import Drawer from "./components/Drawer";
 import "./App.css";
+import { createTheme } from "@mui/material";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#F44336",
+    },
+  },
+});
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +56,7 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
         </Routes>
         <main className="content">
           <div className="row">
