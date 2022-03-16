@@ -113,7 +113,10 @@ const MainPage = () => {
                       component="h1"
                       variant="h5"
                       align="left"
-                      sx={{ paddingBottom: 2 }}
+                      sx={{
+                        paddingBottom: 2,
+                        fontWeight: theme.typography.fontWeightLight,
+                      }}
                     >
                       US bans Russian oil imports over Ukraine war
                     </Typography>
@@ -121,7 +124,10 @@ const MainPage = () => {
                       variant="subtitle1"
                       component="h2"
                       align="left"
-                      sx={{ paddingBottom: 1 }}
+                      sx={{
+                        paddingBottom: 1,
+                        fontWeight: theme.typography.fontWeightLight,
+                      }}
                     >
                       US bans Russian oil imports over Ukraine war short by
                       Daisy Mowke / 10:11 pm on 08 Mar 2022,Tuesday US President
