@@ -20,6 +20,7 @@ from TLDR import views
 
 router = routers.DefaultRouter()                   
 router.register(r'press-releases', views.PressReleaseView, 'press-release-view') 
+router.register(r'user', views.UserView, 'user-view') 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
