@@ -128,6 +128,7 @@ const PersistentDrawerLeft = () => {
             "Politics",
             "Technology",
             "Startup",
+            "Change Preference",
           ].map((text, index) => (
             <ListItem
               button

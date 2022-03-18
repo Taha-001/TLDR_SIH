@@ -12,6 +12,8 @@ import {
   Typography,
 } from "@mui/material";
 import Input from "./components/Input";
+import { useTheme } from "@mui/styles";
+import { Link } from "react-router-dom";
 
 const subscriptionCategories = [
   "All News",
@@ -25,6 +27,7 @@ const subscriptionCategories = [
 ];
 
 const RegistrationPage = () => {
+  const theme = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [categories, setCategories] = useState([]);
@@ -67,7 +70,11 @@ const RegistrationPage = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h4">
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{ fontWeight: theme.typography.fontWeightLight }}
+          >
             Register
           </Typography>
           <Box component="form" sx={{ mt: 1 }} onSubmit={submitHandler}>
@@ -87,14 +94,6 @@ const RegistrationPage = () => {
               onChange={passwordChangeHandler}
               sx={{ marginBottom: 3 }}
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 1, mb: 2 }}
-            >
-              Submit
-            </Button>
             <FormControl
               required
               error={error}
@@ -113,8 +112,20 @@ const RegistrationPage = () => {
                 ))}
               </FormGroup>
             </FormControl>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 1, mb: 2 }}
+            >
+              Submit
+            </Button>
+            <Typography component="h3" variant="body1" align="left">
+              Already have an account? &nbsp;
+              <Link to="/">Login</Link>
+            </Typography>
           </Box>
-        </Box>
+        </Box>-
       </Grid>
     </Grid>
   );

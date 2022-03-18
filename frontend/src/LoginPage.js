@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  CssBaseline,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, CssBaseline, Grid, Typography } from "@mui/material";
 import Input from "./components/Input";
+import { useTheme } from "@mui/styles";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const theme = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailChangeHandler = (e) => {
@@ -43,7 +39,11 @@ const LoginPage = () => {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h4">
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{ fontWeight: theme.typography.fontWeightLight }}
+          >
             Login
           </Typography>
           <Box component="form" sx={{ mt: 1 }} onSubmit={submitHandler}>
@@ -71,6 +71,10 @@ const LoginPage = () => {
             >
               Submit
             </Button>
+            <Typography component="h3" variant="body1" align="left">
+              Don't have an account? &nbsp;
+              <Link to="/register">Register.</Link>
+            </Typography>
           </Box>
         </Box>
       </Grid>
