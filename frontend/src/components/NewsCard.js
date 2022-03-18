@@ -26,7 +26,7 @@ const NewsCard = (props) => {
         <Grid item sm={4}>
           <CardMedia
             component="img"
-            src="/assets/news1.jpg"
+            src={props.imgPath}
             sx={{ height: "100%" }}
             alt={props.alt}
           />
@@ -41,13 +41,29 @@ const NewsCard = (props) => {
             }}
           >
             <CardContent>
-              <Typography component="h1" variant="h5" align="left">
+              <Typography
+                component="h1"
+                variant="h5"
+                align="left"
+                sx={{
+                  paddingBottom: 2,
+                  fontWeight: theme.typography.fontWeightLight,
+                }}
+              >
                 {props.heading}
               </Typography>
-              <Typography variant="subtitle1" component="h2" align="left">
+              <Typography
+                variant="subtitle1"
+                component="h2"
+                align="left"
+                sx={{
+                  paddingBottom: 1,
+                  fontWeight: theme.typography.fontWeightLight,
+                }}
+              >
                 {props.summary}
               </Typography>
-              <Typography component="h3" variant="h5" align="left">
+              <Typography component="h3" variant="body2" align="left">
                 read more at &nbsp;
                 <Link
                   href="#"

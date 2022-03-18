@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import RegistrationPage from "./RegistrationPage";
 import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
 import { Routes, Route } from "react-router-dom";
 import Drawer from "./components/Drawer";
 import "./App.css";
-import { createTheme } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -51,11 +51,11 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <ThemeProvider theme={theme}>
         <Drawer />
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/read" element={<MainPage />} />
           <Route path="/register" element={<RegistrationPage />} />
         </Routes>
         <main className="content">
@@ -71,7 +71,7 @@ class App extends Component {
             </div>
           </div>
         </main>
-      </Fragment>
+      </ThemeProvider>
     );
   }
 }
