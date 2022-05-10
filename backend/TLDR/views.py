@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 # from .ml_model import summary_model
 # scrap()
 
-from .summary import scrap
-scrap()
+#from .summary import scrap
+#scrap()
 
 # Create your views here.
 class PressReleaseView(viewsets.ModelViewSet):  

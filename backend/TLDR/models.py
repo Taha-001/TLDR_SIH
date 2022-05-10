@@ -5,5 +5,6 @@ class PressRelease(models.Model):
     PressReleaseTitle = models.CharField(max_length=64)
     PressReleaseDate = models.CharField(max_length=64)
     PressReleaseCategory = models.CharField(max_length=64)
+    PressReleaseImage = models.TextField(null=True)
     PressReleaseLink = models.CharField(max_length=200)
     PressReleaseSummary = models.TextField()

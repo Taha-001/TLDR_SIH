@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+.newsCard {
+  display: flex;
+  width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+  padding: 16px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  background: url("./1971576.jpg");
+  background-blend-mode: overlay;
+}
+
+.newsCard:hover {
+  box-shadow: 0px 16px 40px 1px rgba(0,0,0,0.24), 0px 2px 10px 0 rgba(0,0,0,0.56);
+}
+
+.newsText {
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.author {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #808290;
+}
+
+.lowerNewsText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 10px 0;
+}
+.all-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	height: 36px;
+	outline: none;
+	padding: 0;
+	width: 36px;
+  margin: 0 4px;
+}
+
+
+
+#play {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/play.svg);
+}
+
+#play.played {
+	background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/play1.svg);
+}
+
+#play:hover {
+  background-image: url(https://rpsthecoder.github.io/js-speech-synthesis/play1.svg);
+}
+
+.buttons {
+	display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.readmore {
+  font-size: 0.9em;
+  font-weight: bold;
+  padding-top: 10px;
+  margin-right: 16px;
+}
+
+.readmore a {
+  color: rgba(27, 120, 222, 1);
+  border: 1px solid rgba(27, 120, 222, 1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.readmore a:hover {
+  color: rgba(27, 120, 222, 1);
+  border: 1px solid rgba(27, 120, 222, 1);
+  background-color: rgba(27, 120, 222, 0.16);;
+  text-decoration: underline;
+}
+
+.share {
+  font-size: 0.9em;
+  font-weight: bold;
+  padding-top: 10px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.share a {
+  color: rgba(27, 120, 222, 1);
+  border: 1px solid rgba(27, 120, 222, 1);
+  padding: 8px 16px;
+  border-radius: 50px;
+}
+
+.share a:hover {
+  color: rgba(27, 120, 222, 1);
+  border: 1px solid rgba(27, 120, 222, 1);
+  background-color: rgba(27, 120, 222, 0.16);
+  text-decoration: underline;
+}
+
+.source {
+  text-decoration: none;
+  color: black;
+}
+
+.newsImage {
+  object-fit: contain;
+  width: 320px;
+  height: 268px;
+  border-radius: 5px;
+  margin-right: 16px;
+}
+.title {
+  font-size: 22px;
+  line-height: 27px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+.muted {
+  font-weight: 100;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 22px;
+  color: #44444d;
+}
+
+@media (max-width: 800px) {
+  .newsCard {
+    flex-direction: column;
+    width: 100%;
+  }
+  .newsImage {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+  }
+}

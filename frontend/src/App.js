@@ -1,79 +1,51 @@
-import React, { Component } from "react";
-import RegistrationPage from "./RegistrationPage";
-import LoginPage from "./LoginPage";
-import MainPage from "./MainPage";
-import { Routes, Route } from "react-router-dom";
-import Drawer from "./components/Drawer";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./App.css";
-import { createTheme, ThemeProvider } from "@mui/material";
+import NavInshort from "./components/NavInshort";
+import NewsContent from "./components/NewsContent/NewsContent";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#F44336",
-    },
-  },
-});
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pressRelease: [],
-    };
-  }
 
-  async componentDidMount() {
+function App() {
+  const [newsArray, setNewsArray] = useState([]);
+  const [newsResults, setNewsResults] = useState();
+  const [loadMore, setLoadMore] = useState(20);
+  const [category, setCategory] = useState("ALL");
+  console.log(category)
+  console.log(process.env);
+
+  const newsApi = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/press-releases/");
-      const pressRelease = await res.json();
-      this.setState({
-        pressRelease,
-      });
-      console.log(pressRelease);
-    } catch (e) {
-      console.log(e);
+      const news = await axios.get(
+        `http://127.0.0.1:8000/api/press-releases/`
+      );
+      console.log(news);
+      setNewsArray(news.data);
+      setNewsResults(news.data.length);
+      // console.log(new1.data, new1.data.length)
+    } catch (error) {
+      console.log(error);
     }
-  }
-
-  renderItems = () => {
-    return this.state.pressRelease.map((item) => (
-      <div key={item.PressReleaseId}>
-        <h1>{item.PressReleaseTitle}</h1>
-        <ul className="list-group list-group-flush">
-          <li>{item.PressReleaseDate}</li>
-          <li>{item.PressReleaseCategory}</li>
-          <li>{item.PressReleaseLink}</li>
-          <li>{item.PressReleaseSummary}</li>
-        </ul>
-      </div>
-    ));
   };
 
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <Drawer />
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/read" element={<MainPage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-        </Routes>
-        <main className="content">
-          <div className="row">
-            <div className="col-md-6 col-sm-10 mx-auto p-0">
-              <div className="card p-3">
-                <hr />
-                <ul className="list-group list-group-flush">
-                  {this.renderItems()}
-                </ul>
-                <hr />
-              </div>
-            </div>
-          </div>
-        </main>
-      </ThemeProvider>
-    );
-  }
+  useEffect(() => {
+    newsApi();
+    // eslint-disable-next-line
+  }, [newsResults, loadMore, category]);
+
+  return (
+    <div className="App" id="#home">
+      <NavInshort setCategory={setCategory} />
+      {newsResults && (
+        <NewsContent
+          newsArray={newsArray}
+          newsResults={newsResults}
+          loadMore={loadMore}
+          setLoadMore={setLoadMore}
+          category={category}
+        />
+      )}
+    </div>
+  );
 }
 
 export default App;

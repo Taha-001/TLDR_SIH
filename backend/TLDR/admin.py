@@ -5,6 +5,6 @@ from .models import PressRelease
 
 class PressReleaseAdmin(admin.ModelAdmin):
   list = ('PressReleaseId','PressReleaseTitle', 'PressReleaseDate', 
-  'PressReleaseCategory','PressReleaseLink','PressReleaseSummary')
+  'PressReleaseCategory', 'PressReleaseImage','PressReleaseLink','PressReleaseSummary')
 
 admin.site.register(PressRelease, PressReleaseAdmin)
